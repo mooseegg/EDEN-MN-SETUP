@@ -53,19 +53,14 @@ if [[ ("$install_fail2ban" == "y" || "$install_fail2ban" == "Y" || "$install_fai
   sudo service fail2ban restart
 fi
 if [[ ("$UFW" == "y" || "$UFW" == "Y" || "$UFW" == "") ]]; then
-  sudo apt-get install ufw
-  sudo ufw default deny incoming
-  sudo ufw default allow outgoing
-  sudo ufw allow ssh
   sudo ufw allow 3595/tcp
-  sudo ufw enable
 fi
 
 #Install Daemon
 sudo cp -v ~/EDEN-MN-SETUP/Eden-v1.0.0.1-ubuntu16/edend /usr/bin/
 sudo cp -v ~/EDEN-MN-SETUP/Eden-v1.0.0.1-ubuntu16/eden-cli /usr/bin/
-chmod +x /usr/bin/edend
-chmod +x /usr/bin/eden-cli
+sudo chmod +x /usr/bin/edend
+sudo chmod +x /usr/bin/eden-cli
 
 #Start Daemon so it will create coin directory (~/.eden)
 edend -daemon
