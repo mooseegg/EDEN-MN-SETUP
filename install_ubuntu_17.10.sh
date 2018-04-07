@@ -115,6 +115,10 @@ sudo chmod 0600 ~/.eden/eden.conf
   crontab -l 2>/dev/null
   echo '@reboot sleep 60 && eden-cli masternode start'
 ) | crontab
+(
+  crontab -l 2>/dev/null
+  echo '*/5 * * * * eden-cli sentinelping 1.1.0'
+) | crontab
 
 echo "Coin setup complete."
 
