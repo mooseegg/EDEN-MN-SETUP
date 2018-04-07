@@ -96,13 +96,13 @@ externalip='$ip'
 bind='$ip':3595
 masternodeprivkey='$key'
 masternode=1
-addnode=173.254.224.62 
-addnode=173.254.248.237 
-addnode=64.110.131.165 
-addnode=188.166.173.185 
-addnode=167.99.142.15 
-addnode=167.99.37.64 
-addnode=139.59.226.90
+addnode=65.35.162.172:3595
+addnode=114.113.229.215:3595
+addnode=88.147.139.222:3595
+addnode=140.82.8.186:3595
+addnode=221.162.18.253:3595
+addnode=45.76.12.139:3595
+addnode=207.246.83.105:3595
 ' | sudo -E tee ~/.eden/eden.conf >/dev/null 2>&1
 sudo chmod 0600 ~/.eden/eden.conf
 
