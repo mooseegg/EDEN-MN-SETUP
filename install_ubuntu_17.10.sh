@@ -57,8 +57,8 @@ if [[ ("$UFW" == "y" || "$UFW" == "Y" || "$UFW" == "") ]]; then
 fi
 
 #Install Daemon
-sudo cp -v ~/EDEN-MN-SETUP/Reden_linux_ubuntu_17_1.0.0/redend /usr/bin/
-sudo cp -v ~/EDEN-MN-SETUP/Reden_linux_ubuntu_17_1.0.0/reden-cli /usr/bin/
+sudo cp -v ~/EDEN-MN-SETUP/redend /usr/bin/
+sudo cp -v ~/EDEN-MN-SETUP/reden-cli /usr/bin/
 sudo chmod +x /usr/bin/redend
 sudo chmod +x /usr/bin/reden-cli
 
