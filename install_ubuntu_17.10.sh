@@ -96,8 +96,8 @@ externalip='$ip'
 bind='$ip':13058
 masternodeprivkey='$key'
 masternode=1
-' | sudo -E tee ~/.RedenCore/reden.conf >/dev/null 2>&1
-sudo chmod 0600 ~/.RedenCore/reden.conf
+' | sudo -E tee ~/.redencore/reden.conf >/dev/null 2>&1
+sudo chmod 0600 ~/.cedencore/reden.conf
 
 #Starting coin
 (
