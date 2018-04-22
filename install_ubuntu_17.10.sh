@@ -57,8 +57,8 @@ if [[ ("$UFW" == "y" || "$UFW" == "Y" || "$UFW" == "") ]]; then
 fi
 
 #Install Daemon
-sudo cp -v ~/EDEN-MN-SETUP/Eden-v1.0.0.1-ubuntu16/edend /usr/bin/
-sudo cp -v ~/EDEN-MN-SETUP/Eden-v1.0.0.1-ubuntu16/eden-cli /usr/bin/
+sudo cp -v ~/EDEN-MN-SETUP/Reden_linux_ubuntu_17_1.0.0/redend /usr/bin/
+sudo cp -v ~/EDEN-MN-SETUP/Reden_linux_ubuntu_17_1.0.0/reden-cli /usr/bin/
 sudo chmod +x /usr/bin/redend
 sudo chmod +x /usr/bin/reden-cli
 
@@ -82,7 +82,7 @@ echo $STRING13
 echo $STRING4
 sleep 10
 
-#Create eden.conf
+#Create reden.conf
 echo '
 rpcuser='$password'
 rpcpassword='$password2'
@@ -116,7 +116,7 @@ sudo chmod 0600 ~/.RedenCore/reden.conf
 echo "Coin setup complete."
 
 #Start Daemon with newly created conf file (daemon=1)
-edend
+redend
 
 echo $STRING2
 echo $STRING13
