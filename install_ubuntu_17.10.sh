@@ -53,23 +53,23 @@ if [[ ("$install_fail2ban" == "y" || "$install_fail2ban" == "Y" || "$install_fai
   sudo service fail2ban restart
 fi
 if [[ ("$UFW" == "y" || "$UFW" == "Y" || "$UFW" == "") ]]; then
-  sudo ufw allow 3595/tcp
+  sudo ufw allow 13058/tcp
 fi
 
 #Install Daemon
 sudo cp -v ~/EDEN-MN-SETUP/Eden-v1.0.0.1-ubuntu16/edend /usr/bin/
 sudo cp -v ~/EDEN-MN-SETUP/Eden-v1.0.0.1-ubuntu16/eden-cli /usr/bin/
-sudo chmod +x /usr/bin/edend
-sudo chmod +x /usr/bin/eden-cli
+sudo chmod +x /usr/bin/redend
+sudo chmod +x /usr/bin/reden-cli
 
 #Start Daemon so it will create coin directory (~/.eden)
-edend -daemon
+redend -daemon
 
 echo "sleep for 30 seconds..."
 sleep 30
 
 #Stop Daemon
-eden-cli stop
+reden-cli stop
 
 echo "sleep for 30 seconds..."
 sleep 30
@@ -93,31 +93,24 @@ daemon=1
 logtimestamps=1
 maxconnections=32
 externalip='$ip'
-bind='$ip':3595
+bind='$ip':13058
 masternodeprivkey='$key'
 masternode=1
-addnode=65.35.162.172:3595
-addnode=114.113.229.215:3595
-addnode=88.147.139.222:3595
-addnode=140.82.8.186:3595
-addnode=221.162.18.253:3595
-addnode=45.76.12.139:3595
-addnode=207.246.83.105:3595
-' | sudo -E tee ~/.eden/eden.conf >/dev/null 2>&1
-sudo chmod 0600 ~/.eden/eden.conf
+' | sudo -E tee ~/.RedenCore/reden.conf >/dev/null 2>&1
+sudo chmod 0600 ~/.RedenCore/reden.conf
 
 #Starting coin
 (
   crontab -l 2>/dev/null
-  echo '@reboot sleep 30 && edend -daemon -shrinkdebugfile'
+  echo '@reboot sleep 30 && redend -daemon -shrinkdebugfile'
 ) | crontab
 (
   crontab -l 2>/dev/null
-  echo '@reboot sleep 60 && eden-cli masternode start'
+  echo '@reboot sleep 60 && reden-cli masternode start'
 ) | crontab
 (
   crontab -l 2>/dev/null
-  echo '*/5 * * * * eden-cli sentinelping 1.1.0'
+  echo '*/5 * * * * reden-cli sentinelping 1.1.0'
 ) | crontab
 
 echo "Coin setup complete."
@@ -145,5 +138,5 @@ echo $STRING14
 sleep 5m
 
 read -p "Press any key to continue... " -n1 -s
-eden-cli masternode start
-eden-cli masternode status
+reden-cli masternode start
+reden-cli masternode status
